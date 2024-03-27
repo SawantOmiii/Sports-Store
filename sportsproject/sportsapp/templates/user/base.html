@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sports Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        .ml1 {
+            margin-left: 10px;
+        }
+
+        .empty {
+            color: rgb(108, 99, 93);
+            text-align: center;
+            margin-top: 250px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .product-img {
+            width: 480px;
+            height: 380px;
+            object-fit: cover;
+        }
+
+        .logoutbtn {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+        }
+
+        .pc {
+            position: relative;
+        }
+
+        .sp {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 35px;
+            color: #f0e5e7;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-light">
+        <div class="container-fluid">
+            <div class='d-flex justify-content-between align-items-center'>
+                <div class="p-2"><a class="navbar-brand" href="{% url 'userIndex' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="" width="160px" height="70px"
+                            class="d-inline-block align-text-top">
+                    </a></div>
+                    <a href="{% url 'cart' %}" class="logoutbtn" style="color: red; text-decoration: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2">
+                            </path>
+                        </svg>
+                        {{count}}
+                    </a>
+                <div class="p-2 text-end">
+                    <a href="{% url 'logout' %}" class="logoutbtn">
+                        <button type="button" class="btn btn-outline-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z">
+                                </path>
+                                <path fill-rule="evenodd"
+                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z">
+                                </path>
+                            </svg>
+                            Logout
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-danger fontStyle2">
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#bottomNavbar"
+            class="btn btn-danger w-100 d-lg-none d-md-none d-sm-block d-xs-block rounded-0 p-2"><i
+                class="fas fa-bars me-2"></i> Menu</button>
+        <div class="collapse navbar-collapse px-2" id="bottomNavbar">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-space-between align-items-center" id="removeFlex">
+                    <div class="flex-grow-1">
+                        <a href="#" class="active d-inline-block customNav">Home</a>
+                        <a href="#" class="d-inline-block dropdown-toggle customNav" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Category
+
+                        </a>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="dropdown-item">Badminton</a></li>
+                            <li><a href="#" class="dropdown-item">cricket</a></li>
+                            <li><a href="#" class="dropdown-item">Football</a></li>
+                            <li><a href="#" class="dropdown-item">Lawn tennis</a></li>
+                            <li><a href="#" class="dropdown-item"></a></li>
+                        </ul>
+                    </div>
+                    <div class="m-3">
+                        <form action="{% url 'search' %}" method="post" class="d-flex">
+                            {% csrf_token %}
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-warning" type="submit">Search</button>
+                        </form>
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}
+    <h1>Base Page</h1>
+    {% endblock %}
+    <footer class="footer-main bg-dark">
+        <div class="container">
+            <div class="row address-main">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="address-box clearfix">
+                        <div class="add-icon">
+                            <img src="{% static 'images/map.png' %}" alt="" />
+                        </div>
+                        <div class="add-content">
+                            <h5>Address</h5>
+                            <p> SportStore24 Pvt Ltd
+                                Total Sports equipments,
+                                A-3, 806, Empire Mahal, Dadar T.T. Circle, Mumbai, Maharashtra, India </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="address-box clearfix">
+                        <div class="add-icon">
+                            <img src="{% static 'images/smartphone.png' %}" alt="" />
+                        </div>
+                        <div class="add-content">
+                            <h5>Phone</h5>
+                            <p><a href="tel:+91-" style="text-decoration: none;"> +(91) 7031127130</a> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div class="address-box clearfix">
+                        <div class="add-icon">
+                            <img src="{% static 'images/gmail.png' %}" width="" alt="" />
+                        </div>
+                        <div class="add-content">
+                            <h5>Email</h5>
+                            <p> <a href="mailto:" style="text-decoration:none">omsawant2525@gmail.com</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Footer -->
+    <footer class="bg-dark text-center text-white">
+
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-instagram"></i></a>
+
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            SportStore24 @ 2024 All Rights Reserved.
+        </div>
+        <!-- Copyright -->
+    </footer>
+    </footer>
+
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
